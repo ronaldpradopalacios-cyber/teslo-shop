@@ -1,4 +1,8 @@
-import { QuantitySelector } from "@/components";
+import {
+  ProductMobileSlideshow,
+  ProductSlideshow,
+  QuantitySelector,
+} from "@/components";
 import { SizeSelector } from "@/components/product/size-selector/SizeSelector";
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed/seed";
@@ -21,7 +25,20 @@ export default async function ({ params }: Props) {
   return (
     <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
       {/* Slide show */}
-      <div className="col-span-1 md:col-span-2"> hola</div>
+      <div className="col-span-1 md:col-span-2">
+        {/* Mobile Slideshow */}
+        <ProductMobileSlideshow
+          images={product.images}
+          title={product.title}
+          className="block sm:hidden"
+        />
+        {/* Desktop Slideshow */}
+        <ProductSlideshow
+          images={product.images}
+          title={product.title}
+          className="hidden sm:block"
+        />
+      </div>
 
       {/* Detalles del producto */}
       <div className="col-span-1 px-5">
